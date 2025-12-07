@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2025-12-07T00:00:00.000Z" agent="copilot-drawio-export" etag="1" version="20.6.10" type="github">
+  <diagram id="erd-diagram" name="ERD">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- customers (top-right) -->
+        <mxCell id="customers" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>customers</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>name : string<br/>phone : string<br/>email : string<br/>created_at : timestamp</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#E3D400;fillColor=#0F0F0F;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="740" y="40" width="220" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- reservations (top-center) -->
+        <mxCell id="reservations" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>reservations</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>customer_id : string (FK)<br/>reservation_time : timestamp<br/>party_size : int<br/>status : string<br/>created_at : timestamp<br/>table_id : string (FK)</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#B66AE6;fillColor=#0F0710;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="20" width="260" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- tables (right-center) -->
+        <mxCell id="tables" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>tables</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>table_number : int<br/>seats : int<br/>location : string<br/>status : string</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#19BFA7;fillColor=#071414;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="740" y="200" width="220" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- orders (center) -->
+        <mxCell id="orders" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>orders</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>customer_id : string (FK)<br/>table_id : string (FK)<br/>order_time : timestamp<br/>total_amount : decimal<br/>status : string<br/>payment_method : string<br/>staff_id : string (FK)</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#2B82E6;fillColor=#071425;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="220" width="260" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- order_items (left-center) -->
+        <mxCell id="order_items" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>order_items</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>order_id : string (FK)<br/>quantity : int<br/>price : decimal<br/>menu_item_id : string (FK)</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#2DCCA7;fillColor=#061819;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="220" width="240" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- menu_items (center-bottom) -->
+        <mxCell id="menu_items" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>menu_items</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>name : string<br/>description : string<br/>price : decimal<br/>category : string<br/>is_active : bool</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D94A4A;fillColor=#110606;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="460" width="260" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- menu_item_ingredients (left-bottom) -->
+        <mxCell id="menu_item_ingredients" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>menu_item_ingredients</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>menu_item_id : string (FK)<br/>quantity : decimal<br/>ingredient_id : string (FK)</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#8B2B2B;fillColor=#130606;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="460" width="240" height="140" as="geometry"/>
+        </mxCell>
+
+        <!-- ingredients (bottom-center) -->
+        <mxCell id="ingredients" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>ingredients</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>name : string<br/>unit : string<br/>current_stock : decimal<br/>reorder_level : decimal<br/>is_active : bool</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#00D1D1;fillColor=#07181A;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="660" width="260" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- inventory_transactions (bottom-left) -->
+        <mxCell id="inventory_transactions" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>inventory_transactions</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>staff_id : string (FK)<br/>ingredient_id : string (FK)<br/>transaction_type : string<br/>quantity : decimal<br/>supplier_id : string (FK)<br/>transaction_date : timestamp<br/>notes : string</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#9E9E9E;fillColor=#070707;fontSize=11;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="660" width="240" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- suppliers (bottom-right) -->
+        <mxCell id="suppliers" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>suppliers</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>name : string<br/>contact_name : string<br/>phone : string<br/>email : string<br/>address : string</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#B63C3C;fillColor=#120606;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="740" y="620" width="220" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- staff (right-bottom) -->
+        <mxCell id="staff" value="<div style=&quot;font-weight:bold;font-size:12px;margin-bottom:6px;&quot;>staff</div><hr/><div style=&quot;font-size:11px;&quot;>id : string (PK)<br/>name : string<br/>role : string<br/>phone : string<br/>email : string<br/>hire_date : date<br/>salary : decimal</div>" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#EAB84C;fillColor=#140F05;fontSize=12;strokeWidth=1" vertex="1" parent="1">
+          <mxGeometry x="740" y="380" width="220" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Connectors (edges) -->
+        <!-- reservations -> customers -->
+        <mxCell id="e_res_cust" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="reservations" target="customers" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- reservations -> tables -->
+        <mxCell id="e_res_table" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="reservations" target="tables" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- orders -> customers -->
+        <mxCell id="e_order_cust" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="orders" target="customers" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- orders -> tables -->
+        <mxCell id="e_order_table" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="orders" target="tables" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- orders -> staff -->
+        <mxCell id="e_order_staff" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="orders" target="staff" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- order_items -> orders -->
+        <mxCell id="e_oi_order" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="order_items" target="orders" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- order_items -> menu_items -->
+        <mxCell id="e_oi_mi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="order_items" target="menu_items" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- menu_item_ingredients -> menu_items -->
+        <mxCell id="e_mii_mi" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="menu_item_ingredients" target="menu_items" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- menu_item_ingredients -> ingredients -->
+        <mxCell id="e_mii_ing" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="menu_item_ingredients" target="ingredients" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- ingredients -> inventory_transactions -->
+        <mxCell id="e_ing_inv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="ingredients" target="inventory_transactions" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- suppliers -> inventory_transactions -->
+        <mxCell id="e_sup_inv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="suppliers" target="inventory_transactions" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- staff -> inventory_transactions -->
+        <mxCell id="e_staff_inv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=1;strokeColor=#CCCCCC" edge="1" source="staff" target="inventory_transactions" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
